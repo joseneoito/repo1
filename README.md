@@ -9,3 +9,5 @@ we are assuming that sharedmodules folder is available just outside this repo
 
 
 both approch take take from this repo , so .env need to be present here only and not required in npm package /symplink repo
+
+npm i joseneoito/test-npm  
