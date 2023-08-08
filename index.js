@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
 const port = 2000
+require('dotenv').config()
 const { body, validationResult } = require('express-validator');
 const { validateRequiredFields, validateRequiredArrays } = require('./sharedModules/validator');
+const utils = require('./sharedModules/queries');
+const Utility = new utils();
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
@@ -10,6 +13,8 @@ app.get('/', (req, res) => {
 app.post('/comments', validateRequiredFields(['body', 'news_uid']), async (req, res, next) => {
     try {
         const errors = validationResult(req);
+        let res = await Utility.getUserByUsername('jose2007kj');
+        console.log("User by Username", res)
         if (!errors.isEmpty()) {
             throw errors.array();
         }
